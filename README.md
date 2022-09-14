@@ -17,7 +17,7 @@ npm start
 
 ### Mock DB Server
 ```shell
-npm run db
+npm run mockdb
 ```
 
 ## Description
