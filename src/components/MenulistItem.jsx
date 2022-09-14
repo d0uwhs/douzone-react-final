@@ -1,9 +1,14 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
-const MenuItem = ({id, menuName, menuPrice, categoryName, isOrderable}) => {
+
+const MenulistItem = ({item}) => {
+
+    const {id, menuName, menuPrice, categoryName, isOrderable} = item
 
     return (
         <div>
+            <Link to={`${id}`}>{id}</Link>
             <div className="">{id}</div>
             <div className="">{menuName}</div>
             <div className="">{menuPrice}</div>
@@ -13,4 +18,4 @@ const MenuItem = ({id, menuName, menuPrice, categoryName, isOrderable}) => {
     )
 }
 
-export default MenuItem;
+export default MenulistItem;
