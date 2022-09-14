@@ -17,7 +17,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "db": "json-server ./db/db.json -c"
+    "mockdb": "json-server ./db/db.json -c"
   },
   "eslintConfig": {
     "extends": [
