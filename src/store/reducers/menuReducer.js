@@ -7,13 +7,15 @@ const reducerName = "menu";
  * Reducer의 name을 명시적으로 지정하고, Template Literal로 액션 함수 생성
  */
 const GET_MENULIST = `${reducerName}/GET_MENULIST`
+const GET_MENUDETAIL = `${reducerName}/GET_MENUDETAIL`
 
 /**
  * createActions을 통한 자동 action 생성. #13-3
  * Action 타입을 지정할 때, 지정된 규칙으로 선언해야 한다.
  */
-export const {menu: {getMenulist}} = createActions({
-    [GET_MENULIST]: (res) => ({menulist: res})
+export const {menu: {getMenulist, getMenudetail}} = createActions({
+    [GET_MENULIST]: (res) => ({menulist: res}),
+    [GET_MENUDETAIL]: (res) => ({menudetail: res}),
 })
 
 const menuReducer = handleActions(
@@ -26,7 +28,10 @@ const menuReducer = handleActions(
          */
         [GET_MENULIST]: (state, {payload}) => {
             return payload
-        }
+        },
+        [GET_MENUDETAIL]: (state, {payload}) => {
+            return payload
+        },
     }, initialState
 )
 

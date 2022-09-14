@@ -9,9 +9,9 @@ import './index.css'
 import ErrorPage from "./pages/ErrorPage";
 import Layout from "./components/layout/Layout";
 import LoginPage from "./pages/LoginPage";
-import MenuPage from "./pages/menu/MenuPage";
+import MenulistPage from "./pages/menu/MenulistPage";
 import MainPage from "./pages/MainPage";
-import MenuDetailPage from "./pages/menu/MenuDetailPage";
+import MenudetailPage from "./pages/menu/MenudetailPage";
 import {Provider} from "react-redux";
 import store from "./store/store";
 
@@ -32,8 +32,8 @@ root.render(
                         <Route path="login" element={<LoginPage/>}/>
                         {/*Menu*/}
                         <Route path="menu">
-                            <Route path="" element={<MenuPage/>}/>
-                            <Route path=":id" element={<MenuDetailPage/>}/>
+                            <Route path="" element={<MenulistPage/>}/>
+                            <Route path=":id" element={<MenudetailPage/>}/>
                             <Route path="modify">
 
                             </Route>
