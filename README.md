@@ -30,6 +30,8 @@ npm run mockdb
 >가급적 교육에 나온 내용 위주로만 기술하며,
 >해당 프로젝트에 대한 리팩토링(```without CRA```, ```Typescript```)은 다른 Repo에서 진행할 예정입니다.
 
+>스타일링은 CSS in JS 기반 라이브러리인 [Styled-Components](https://www.npmjs.com/package/styled-components) 를 사용합니다.
+
 ## Dependent libraries
 
 - axios: ^0.27.2,

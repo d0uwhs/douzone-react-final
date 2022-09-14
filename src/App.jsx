@@ -1,9 +1,11 @@
-function App() {
-  return (
-    <div>
-      Clean Boilerplate
-    </div>
-  );
-}
+import React from "react";
+
+const App = () => {
+    return (
+        <div>
+
+        </div>
+    );
+};
 
 export default App;
