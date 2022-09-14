@@ -1,6 +1,8 @@
 import React from "react";
 
-const MenuItem = ({id, menuName, menuPrice, categoryName, isOrderable}) => {
+const MenuItem = ({item}) => {
+
+    const {id, menuName, menuPrice, categoryName, isOrderable} = item
 
     return (
         <div>
