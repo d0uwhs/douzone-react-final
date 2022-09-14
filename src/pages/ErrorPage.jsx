@@ -10,15 +10,19 @@ import styled from "styled-components";
  * @return {JSX.Element}
  * @constructor
  */
-const ErrorPage = ({errorCode, errorMsg}) => {
+const ErrorPage = ({errorCode = '404', errorMsg = '404 Not Found'}) => {
 
     const ErrorTitle = styled.div`
+        text-align: center;
+    `;
+    const ErrorMsg = styled.div`
         text-align: center;
     `;
 
     return (
         <div>
-            <ErrorTitle>Error!</ErrorTitle>
+            <ErrorTitle>{errorCode}</ErrorTitle>
+            <ErrorMsg>{errorMsg}</ErrorMsg>
         </div>
     )
 }

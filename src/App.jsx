@@ -1,10 +1,19 @@
-import React from "react";
+import React, {useEffect} from "react";
+import Header from "./components/layout/Header";
+import Layout from "./components/layout/Layout";
+import Footer from "./components/layout/Footer";
 
 const App = () => {
+    useEffect(() => {
+        document.cookie = `123; path=/; expires=`
+
+    },[])
     return (
-        <div>
-            Douzone React Final
-        </div>
+        <>
+        <Header/>
+        <Layout/>
+        <Footer/>
+        </>
     );
 };
 
