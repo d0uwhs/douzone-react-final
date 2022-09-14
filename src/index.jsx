@@ -6,6 +6,7 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
  * Reset CSS
  */
 import './index.css'
+import ErrorPage from "./pages/error/ErrorPage";
 
 
 const root = ReactDOM.createRoot(document.querySelector('#root'));
@@ -16,6 +17,7 @@ root.render(
     <BrowserRouter>
         <Routes>
             <Route path="" element={<App/>}/>
+            <Route path="*" element={<ErrorPage/>}/>
         </Routes>
     </BrowserRouter>
 );

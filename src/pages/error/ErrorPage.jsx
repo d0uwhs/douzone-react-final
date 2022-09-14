@@ -1,4 +1,6 @@
 import React from "react";
+import styled from "styled-components";
+
 
 /**
  * Error Page.
@@ -9,9 +11,14 @@ import React from "react";
  * @constructor
  */
 const ErrorPage = ({errorCode, errorMsg}) => {
+
+    const ErrorTitle = styled.div`
+        text-align: center;
+    `;
+
     return (
         <div>
-
+            <ErrorTitle>Error!</ErrorTitle>
         </div>
     )
 }
