@@ -8,6 +8,18 @@
 npm install
 ```
 
+## Getting Started
+
+### Development Server
+```shell
+npm start
+```
+
+### Mock DB Server
+```shell
+npm run db
+```
+
 ## Description
 
 함수형 컴포넌트, Hooks 사용, React Project 에서 많이 사용되는 라이브러리인 ```React Router```, ```Redux```, Facebook이
