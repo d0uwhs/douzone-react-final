@@ -6,13 +6,14 @@
       "nickname": "관리자"
     },
     {
-      "id": "hD2REE_"
+      "id": "minjunkim",
+      "password": "1234",
+      "nickname": "김민준"
     },
     {
-      "id": "85U24I2"
-    },
-    {
-      "id": "z2DIWZa"
+      "id": "user01",
+      "password": "1",
+      "nickname": "일반유저"
     }
   ],
   "menu": [
