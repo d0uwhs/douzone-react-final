@@ -3,6 +3,9 @@ import {useDispatch, useSelector} from "react-redux";
 import {deleteMenuApi, getMenudetailApi} from "../../store/middlewares/thunks/apis/menulistApi";
 import {useNavigate, useParams} from "react-router-dom";
 import MenudetailItem from "../../components/MenudetailItem";
+import {StickyBottomButton} from "../../components/style/styledButtons";
+
+
 
 const MenudetailPage = () => {
     /**
@@ -15,13 +18,14 @@ const MenudetailPage = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
+
     useEffect(() => {
         dispatch(getMenudetailApi(params.id))
     }, [dispatch])
 
     const handleOnClickForDelete = () => {
-        const choose = window.confirm("삭제하겠습니까?")
-        if (choose){
+        const choose = window.confirm("삭제 하겠습니까?")
+        if (choose) {
             dispatch(deleteMenuApi(params.id)).then(() => {
                 alert("삭제완료")
                 navigate(-1)
@@ -38,13 +42,17 @@ const MenudetailPage = () => {
      */
     return (
         <div>
-            { userSelector.isLogged &&
+            {userSelector.isLogged &&
                 <>
-                    <button className ="button" onClick={ handleOnClickForPut }>메뉴 수정</button>
-                    <button className ="button" onClick={ handleOnClickForDelete }>메뉴 삭제</button>
+                        <StickyBottomButton textColor="black" btnSize="50%" bgColor="#FFFFFF" border="1px solid #AAAAAA"
+                                            onClick={handleOnClickForPut}>메뉴 수정</StickyBottomButton>
+                        <StickyBottomButton textColor="black" btnSize="50%" bgColor="#FFFFFF" border="1px solid #AAAAAA"
+                                            onClick={handleOnClickForDelete}>메뉴 삭제</StickyBottomButton>
                 </>
             }
-            {menudetail ? <MenudetailItem item={menudetail}/> : <div>조회된 항목이 없습니다.</div>}
+
+
+            {menudetail ? <MenudetailItem key={menudetail.id} item={menudetail}/> : <div>조회된 항목이 없습니다.</div>}
         </div>
     )
 }
