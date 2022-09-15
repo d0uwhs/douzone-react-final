@@ -1,5 +1,5 @@
 import {fetcher} from "../../../../utils/fetcherUtils";
-import {getMenudetail, getMenulist, postRegistermenu} from "../../../reducers/menuReducer";
+import {deleteMenu, getMenudetail, getMenulist, postRegistermenu} from "../../../reducers/menuReducer";
 
 const url = "/menu"
 
@@ -24,10 +24,21 @@ export const getMenudetailApi = (id) => {
         dispatch(getMenudetail(response))
     }
 }
-
+/**
+ * 해당하는 menu 객체를 이용하여 JSON-Server에 등록합니다.
+ * @param menu
+ * @return {(function(*): Promise<void>)|*}
+ */
 export const postRegistermenuApi = (menu) => {
     return async (dispatch) => {
         const response = await fetcher.post(url,menu)
         dispatch(postRegistermenu(response))
+    }
+}
+
+export const deleteMenuApi = (id) => {
+    return async (dispatch) => {
+        const response = await fetcher.delete(`${url}/${id}`).then(res => res.data);
+        dispatch(deleteMenu(response))
     }
 }

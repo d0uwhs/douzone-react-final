@@ -2,11 +2,14 @@ import React, {useEffect, useState} from "react";
 import useNavigateGuard from "../../hooks/useNavigateGuard";
 import {useDispatch, useSelector} from "react-redux";
 import {postRegistermenuApi} from "../../store/middlewares/thunks/apis/menulistApi";
+import {useNavigate} from "react-router-dom";
 
 const MenuRegisterPage = () => {
     const userSelector = useSelector((state) => state.userReducer)
     const menuSelector = useSelector(state => state.menuReducer);
     const dispatch = useDispatch();
+
+    const navigate = useNavigate();
 
     useNavigateGuard("/login", !userSelector.isLogged)
 
