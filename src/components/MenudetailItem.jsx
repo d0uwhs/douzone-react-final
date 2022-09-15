@@ -10,7 +10,7 @@ const MenudetailItem = ({item}) => {
           <div className="">{categoryName}</div>
           <div className="">{isOrderable}</div>
           <div className="">{description}</div>
-          <div className="">{image}</div>
+            <img src={image} alt=""/>
         </div>
     )
 }

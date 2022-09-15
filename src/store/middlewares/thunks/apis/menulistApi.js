@@ -1,5 +1,5 @@
 import {fetcher} from "../../../../utils/fetcherUtils";
-import {getMenudetail, getMenulist} from "../../../reducers/menuReducer";
+import {getMenudetail, getMenulist, postRegistermenu} from "../../../reducers/menuReducer";
 
 const url = "/menu"
 
@@ -22,5 +22,12 @@ export const getMenudetailApi = (id) => {
     return async (dispatch) => {
         const response = await fetcher.get(`${url}/${id}`).then(res => res.data);
         dispatch(getMenudetail(response))
+    }
+}
+
+export const postRegistermenuApi = (menu) => {
+    return async (dispatch) => {
+        const response = await fetcher.post(url,menu)
+        dispatch(postRegistermenu(response))
     }
 }
