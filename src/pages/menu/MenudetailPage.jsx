@@ -29,6 +29,10 @@ const MenudetailPage = () => {
         }
     }
 
+    const handleOnClickForPut = () => {
+        navigate(`/menu/modify/${params.id}`)
+    }
+
     /**
      * Optional Chaining을 통해, 조회된 값이 없을 경우. TODO:404 route? 아니면 조회된 항목이 없습니다 표시
      */
@@ -36,7 +40,7 @@ const MenudetailPage = () => {
         <div>
             { userSelector.isLogged &&
                 <>
-                    {/*<button className ="button" onClick={ updateHandler }>메뉴 수정</button>*/}
+                    <button className ="button" onClick={ handleOnClickForPut }>메뉴 수정</button>
                     <button className ="button" onClick={ handleOnClickForDelete }>메뉴 삭제</button>
                 </>
             }

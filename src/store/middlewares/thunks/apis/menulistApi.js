@@ -1,5 +1,5 @@
 import {fetcher} from "../../../../utils/fetcherUtils";
-import {deleteMenu, getMenudetail, getMenulist, postRegistermenu} from "../../../reducers/menuReducer";
+import {deleteMenu, getMenudetail, getMenulist, postRegistermenu, putMenu} from "../../../reducers/menuReducer";
 
 const url = "/menu"
 
@@ -40,5 +40,12 @@ export const deleteMenuApi = (id) => {
     return async (dispatch) => {
         const response = await fetcher.delete(`${url}/${id}`).then(res => res.data);
         dispatch(deleteMenu(response))
+    }
+}
+
+export const putMenuApi = (modifyMenu, paramsId) => {
+    return async (dispatch) => {
+        const response = await fetcher.put(`${url}/${paramsId}`,modifyMenu).then(res => res.data);
+        dispatch(putMenu(response))
     }
 }

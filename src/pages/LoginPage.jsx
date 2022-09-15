@@ -51,7 +51,7 @@ const LoginPage = () => {
         dispatch(loginUserApi(user))
             .then((res) => {
                     if (res.message === "success") {
-                        navigate("/")
+                        navigate(-1)
                     }
                     if (res.message === "fail") {
                         setErrorMsg("아이디 또는 비밀번호가 맞지 않습니다.")

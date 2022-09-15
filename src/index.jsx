@@ -16,6 +16,7 @@ import {Provider} from "react-redux";
 import store from "./store/store";
 import LogoutPage from "./pages/LogoutPage";
 import MenuRegisterPage from "./pages/menu/MenuRegisterPage";
+import MenuModifyPage from "./pages/menu/modify/MenuModifyPage";
 
 
 const root = ReactDOM.createRoot(document.querySelector('#root'));
@@ -35,6 +36,9 @@ root.render(
                         <Route path="menu">
                             <Route path="" element={<MenulistPage/>}/>
                             <Route path=":id" element={<MenudetailPage/>}/>
+                            <Route path="modify">
+                                <Route path=":id" element={<MenuModifyPage/>}/>
+                            </Route>
                             <Route path="register" element={<MenuRegisterPage/>}/>
                         </Route>
                         {/*Error*/}

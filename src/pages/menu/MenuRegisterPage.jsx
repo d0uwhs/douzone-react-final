@@ -55,9 +55,7 @@ const MenuRegisterPage = () => {
 
     const fileChangeHandler = async (e) => {
         const file = e.target.files[0];
-        console.log(file);
         const base64 = await convertBase64(file);
-        console.log(base64);
         setRegisterMenu(
             {
                 ...registerMenu,
@@ -69,7 +67,6 @@ const MenuRegisterPage = () => {
         );
     }
 
-    /* FileReader API를 통해 input type="file"에 첨부 된 파일을 base64 인코딩 형식으로 변환 */
     const convertBase64 = (file) => {
         return new Promise((resolve, reject) => {
             const fileReader = new FileReader();
@@ -83,22 +80,24 @@ const MenuRegisterPage = () => {
         })
     }
 
-    //
-    // useEffect(
-    //     () => {
-    //         /* 메뉴 등록 완료 확인 후 /menu로 이동 */
-    //         if (menuSelector.regist) {
-    //             alert('메뉴 등록');
-    //             navigate(`/menu`);
-    //         }
-    //     },
-    //     [menuSelector, navigate]
-    // );
+
+    useEffect(
+        () => {
+            if (menuSelector.regist) {
+                alert('메뉴 등록');
+                navigate(`/menu`);
+            }
+        },
+        [menuSelector, navigate]
+    );
 
     const onClickHandler = () => {
-        /* registMenu에 대한 유효성 검사 후 호출 */
-        dispatch(postRegistermenuApi(registerMenu));
-    }
+        dispatch(postRegistermenuApi(registerMenu)).then(() => {
+            alert('메뉴 등록');
+            navigate(`/menu`);
+        })
+    };
+
 
     return (
         <>
