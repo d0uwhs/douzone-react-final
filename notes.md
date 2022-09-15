@@ -76,3 +76,50 @@ useEffect hooks는 dependency array에 빈 배열을 넣으면, 컴포넌트가 
 [Understanding exhaustive-deps](https://bobbyhadz.com/blog/react-hooks-exhaustive-deps#:~:text=The%20%22react%2Dhooks%2Fexhaustive,render%20or%20disable%20the%20rule.)
 
 ---
+## #14
+
+
+
+### 참고자료
+
+---
+## Issues
+
+### 1.
+```jsx
+loginUser ? console.log(`Login Test`) : console.log(`Not login Test`);
+```
+빈 배열은 falsy한 값이 아니다.
+
+[MDN Falsy](https://developer.mozilla.org/ko/docs/Glossary/Falsy)
+
+---
+## #16
+
+
+
+### 참고자료
+
+---
+## Issues
+
+### 1.
+```jsx
+const userReducer = handleActions(
+    {
+        [LOGIN]: (state, {payload}) => {
+            if (payload[0]) {
+                ...
+                state.isLogged = true
+                return state //
+            }
+            /**
+             * 변경된 state를 return 해야한다. #16-1
+             */
+            return state
+        },
+        ...
+```
+
+상태를 변화시킨 후, 변경된 상태를 반환해야 한다.
+
