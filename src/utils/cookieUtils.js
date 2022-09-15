@@ -2,13 +2,13 @@ import {COOKIE_EXPIRE_TIME} from "../constants/constants";
 
 /**
  * JSON Data를 직렬화 하여 쿠키로 만듭니다.
- * 쿠키의 유효시간은 생성 시점으로부터 5분입니다.
+ * 쿠키의 유효시간은 생성 시점으로부터 30분 입니다.
  * @param data JSON data
  */
 export const setCookie = (cookieName, data = {}) => {
     const expires = new Date(Date.now() + COOKIE_EXPIRE_TIME)
-    const idInfo = data
-    document.cookie = `${cookieName}=${JSON.stringify(idInfo)}; expires=${expires.toUTCString()}`;
+    const json = data
+    document.cookie = `${cookieName}=${JSON.stringify(json)}; expires=${expires.toUTCString()}`;
 }
 
 /**
@@ -19,8 +19,8 @@ export const setCookie = (cookieName, data = {}) => {
  */
 export const deleteCookie = (cookieName, data = {}) => {
     const expires = new Date(Date.now())
-    const idInfo = data
-    document.cookie = `${cookieName}=${JSON.stringify(idInfo)}; expires=${expires.toUTCString()}`;
+    const json = data
+    document.cookie = `${cookieName}=${JSON.stringify(json)}; expires=${expires.toUTCString()}`;
 }
 
 /**
@@ -30,12 +30,15 @@ export const deleteCookie = (cookieName, data = {}) => {
  */
 export const getCookie = (cookieName) => {
     const _getCookies = document.cookie.split('; ')
-    const cookieList = []
-    for (const getCookie of _getCookies) {
-        let c = getCookie.split('=')
-        cookieList.push({cookieName: c[0], cookieData: JSON.parse(c[1])})
+    if (_getCookies[0]) {
+        const cookieList = []
+        for (const getCookie of _getCookies) {
+            let c = getCookie.split('=')
+            cookieList.push({cookieName: c[0], cookieData: c[1] ? JSON.parse(c[1]) : null})
+        }
+        return cookieList.filter((item) => item.cookieName === cookieName)
     }
-    return cookieList.filter((item) => item.cookieName === cookieName)
+    return null
 }
 
 /**
@@ -43,11 +46,14 @@ export const getCookie = (cookieName) => {
  */
 export const getAllCookies = () => {
     const _getCookies = document.cookie.split('; ')
-    const cookieList = []
-    for (const getCookie of _getCookies) {
-        let c = getCookie.split('=')
-        cookieList.push({cookieName: c[0], cookieData: JSON.parse(c[1])})
+    if (_getCookies[1]) {
+        const cookieList = []
+        for (const getCookie of _getCookies) {
+            let c = getCookie.split('=')
+            cookieList.push({cookieName: c[0], cookieData: c[1] ? JSON.parse(c[1]) : null})
+        }
+        return cookieList
     }
-    return cookieList
+    return null
 }
 

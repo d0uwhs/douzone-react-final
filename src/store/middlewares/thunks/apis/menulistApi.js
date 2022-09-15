@@ -1,5 +1,5 @@
-import {fetcher} from "../../utils/fetcherUtils";
-import {getMenudetail, getMenulist} from "../../store/reducers/menuReducer";
+import {fetcher} from "../../../../utils/fetcherUtils";
+import {getMenudetail, getMenulist} from "../../../reducers/menuReducer";
 
 const url = "/menu"
 

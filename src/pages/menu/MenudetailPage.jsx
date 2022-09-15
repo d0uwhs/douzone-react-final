@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {getMenudetailApi} from "../../middlewares/apis/menulistApi";
+import {getMenudetailApi} from "../../store/middlewares/thunks/apis/menulistApi";
 import {useParams} from "react-router-dom";
 import MenudetailItem from "../../components/MenudetailItem";
 
@@ -9,8 +9,8 @@ const MenudetailPage = () => {
      * props를 통해 id를 받지 않고, URL parameter를 통해 id를 받음.
      */
     const params = useParams();
-    const response = useSelector((state) => state.menuReducer);
-    const menudetail = response.menudetail;
+    const selector = useSelector((state) => state.menuReducer);
+    const menudetail = selector.menudetail;
     const dispatch = useDispatch();
 
     useEffect(() => {

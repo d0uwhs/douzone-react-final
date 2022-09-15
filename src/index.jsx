@@ -14,6 +14,8 @@ import MainPage from "./pages/MainPage";
 import MenudetailPage from "./pages/menu/MenudetailPage";
 import {Provider} from "react-redux";
 import store from "./store/store";
+import LogoutPage from "./pages/LogoutPage";
+import MenuRegisterPage from "./pages/menu/MenuRegisterPage";
 
 
 const root = ReactDOM.createRoot(document.querySelector('#root'));
@@ -29,19 +31,18 @@ root.render(
                         {/*Main*/}
                         {/*index를 사용하지 않고, 명시적으로 URL에 대한 Component를 반환함.*/}
                         <Route path="" element={<MainPage/>}/>
-                        <Route path="login" element={<LoginPage/>}/>
                         {/*Menu*/}
                         <Route path="menu">
                             <Route path="" element={<MenulistPage/>}/>
                             <Route path=":id" element={<MenudetailPage/>}/>
-                            <Route path="modify">
-
-                            </Route>
+                            <Route path="register" element={<MenuRegisterPage/>}/>
                         </Route>
                         {/*Error*/}
                         <Route path="*" element={<ErrorPage/>}/>
                     </Route>
                 </Route>
+                <Route path="login" element={<LoginPage/>}/>
+                <Route path="logout" element={<LogoutPage/>}/>
             </Routes>
         </Provider>
     </BrowserRouter>
