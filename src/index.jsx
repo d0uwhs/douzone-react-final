@@ -2,9 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-/**
- * Reset CSS
- */
+import './fonts.css'
 import './index.css'
 import ErrorPage from "./pages/ErrorPage";
 import Layout from "./components/layout/Layout";
@@ -17,6 +15,7 @@ import store from "./store/store";
 import LogoutPage from "./pages/LogoutPage";
 import MenuRegisterPage from "./pages/menu/MenuRegisterPage";
 import MenuModifyPage from "./pages/menu/modify/MenuModifyPage";
+import MenuSearchPage from "./pages/menu/MenuSearchPage";
 
 
 const root = ReactDOM.createRoot(document.querySelector('#root'));
@@ -40,6 +39,7 @@ root.render(
                                 <Route path=":id" element={<MenuModifyPage/>}/>
                             </Route>
                             <Route path="register" element={<MenuRegisterPage/>}/>
+                            <Route path="search" element={<MenuSearchPage/>}/>
                         </Route>
                         {/*Error*/}
                         <Route path="*" element={<ErrorPage/>}/>

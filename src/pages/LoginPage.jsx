@@ -3,6 +3,14 @@ import {useDispatch, useSelector} from "react-redux";
 import {loginUserApi} from "../store/middlewares/thunks/apis/userApi";
 import {useNavigate} from "react-router-dom";
 import useNavigateGuard from "../hooks/useNavigateGuard";
+import {StickyBottomButton} from "../components/style/styledButtons";
+import styled from "styled-components";
+import {StyledInput} from "../components/style/styledInput";
+
+const Title = styled.div`
+  text-align: center;
+  font-size: 2em;
+`;
 
 const LoginPage = () => {
 
@@ -16,7 +24,7 @@ const LoginPage = () => {
     /**
      * 로그인이 된 상태면 이전 페이지로 보냄.
      */
-    useNavigateGuard("/",selector.isLogged)
+    useNavigateGuard("/", selector.isLogged)
 
     const dispatch = useDispatch()
 
@@ -63,12 +71,20 @@ const LoginPage = () => {
 
     return (
         <div>
-            <div className="">Login Page</div>
+            <Title>Login Page</Title>
             <form onSubmit={handleOnSubmit}>
-                <input type="text" name="id" value={user.id} required onChange={onChangeHandler}/>
-                <input type="password" name="password" value={user.password} required onChange={onChangeHandler}/>
+                <div className="">
+                    ID :
+                    <StyledInput type="text" name="id" value={user.id} required onChange={onChangeHandler}/>
+                </div>
+                <div className="">
+                    PW :
+                    <StyledInput type="password" name="password" value={user.password} required
+                                 onChange={onChangeHandler}/>
+                </div>
                 <div className="">{errorMsg}</div>
-                <button type="submit">LOGIN</button>
+                <StickyBottomButton textColor="black" btnSize="100%" bgColor="#FFFFFF" border="1px solid #AAAAAA"
+                                    type="submit">LOGIN</StickyBottomButton>
             </form>
         </div>
     )

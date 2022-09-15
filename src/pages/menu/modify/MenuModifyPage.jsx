@@ -2,6 +2,13 @@ import React, {useEffect, useState} from "react";
 import {useNavigate, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {putMenuApi} from "../../../store/middlewares/thunks/apis/menulistApi";
+import {StyledInput, StyledSelect} from "../../../components/style/styledInput";
+import {StickyBottomButton} from "../../../components/style/styledButtons";
+import {StyledTextarea} from "../../../components/style/styledTextarea";
+import {Wrapper} from "../../../components/style/styledWrapper";
+
+
+
 
 const MenuModifyPage = () => {
 
@@ -126,52 +133,60 @@ const MenuModifyPage = () => {
 
     return (
         <>
-            <div className="">
-                <h2>{params.id}번 메뉴 수정</h2>
-                <label>메뉴이름 : </label>
-                <input type="text" name="menuName" value={modifyMenu.menuName} onChange={onChangeHandler}/>
-                <br/>
-                <label>메뉴가격 : </label>
-                <input type="number" name="menuPrice" value={modifyMenu.menuPrice} onChange={onChangeHandler}/>
-                <br/>
-                <label>카테고리 : </label>
-                <select name="categoryName" value={modifyMenu.categoryName} onChange={onChangeHandler}>
-                    <option>한식</option>
-                    <option>일식</option>
-                    <option>서양</option>
-                    <option>동양</option>
-                    <option>커피</option>
-                    <option>쥬스</option>
-                    <option>기타</option>
-                </select>
-                <br/>
-                <label>판매여부 : </label>
-                <select name="isOrderable" value={modifyMenu.isOrderable} onChange={onChangeHandler}>
-                    <option value="true">판매 가능</option>
-                    <option value="false">판매 불가</option>
-                </select>
-                <br/>
+            <StickyBottomButton textColor="black" btnSize="100%" bgColor="#FFFFFF" border="1px solid #AAAAAA" onClick={onClickHandler}>메뉴 수정</StickyBottomButton>
+            <Wrapper>
+
                 <div className="">
-                    <label>설명 : </label>&nbsp;
+                    <div className="">
+                        {params.id}번 메뉴 수정
+                    </div>
+                    <label>메뉴이름 : </label>
+                    <StyledInput type="text" name="menuName" value={modifyMenu.menuName} onChange={onChangeHandler}/>
                     <br/>
-                    <textarea name="description" value={modifyMenu.detail.description}
-                              onChange={onChangeHandler}></textarea>
+                    <label>메뉴가격 : </label>
+                    <StyledInput type="number" name="menuPrice" value={modifyMenu.menuPrice} onChange={onChangeHandler}/>
+                    <br/>
+                    <label>카테고리 : </label>
+                    <StyledSelect name="categoryName" value={modifyMenu.categoryName} onChange={onChangeHandler}>
+                        <option>한식</option>
+                        <option>일식</option>
+                        <option>서양</option>
+                        <option>동양</option>
+                        <option>커피</option>
+                        <option>쥬스</option>
+                        <option>기타</option>
+                    </StyledSelect>
+                    <br/>
+                    <label>판매여부 : </label>
+                    <StyledSelect name="isOrderable" value={modifyMenu.isOrderable} onChange={onChangeHandler}>
+                        <option value="true">판매 가능</option>
+                        <option value="false">판매 불가</option>
+                    </StyledSelect>
+                    <br/>
+                    <div className="">
+                        <label>설명 : </label>&nbsp;
+                        <br/>
+                        <StyledTextarea name="description" value={modifyMenu.detail.description}
+                                        onChange={onChangeHandler}></StyledTextarea>
+                    </div>
+                    <br/>
+                    <label>사진 : </label>
+                    <input
+                        type="file"
+                        name="image"
+                        accept='image/*'
+                        onChange={fileChangeHandler}
+                    />
+                    <br/>
+                    <img src={modifyMenu.detail.image} style={{maxWidth: 500}} alt={modifyMenu.menuName}/>
+
                 </div>
-                <br/>
-                <label>사진 : </label>
-                <input
-                    type="file"
-                    name="image"
-                    accept='image/*'
-                    onChange={fileChangeHandler}
-                />
-                <br/>
-                <img src={modifyMenu.detail.image} style={{maxWidth: 500}} alt={modifyMenu.menuName}/>
 
-            </div>
-
-            <button className="button" onClick={onClickHandler}>메뉴 수정</button>
+            </Wrapper>
         </>
+
+
+
     )
 }
 
