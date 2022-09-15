@@ -8,14 +8,20 @@ const reducerName = "menu";
  */
 const GET_MENULIST = `${reducerName}/GET_MENULIST`
 const GET_MENUDETAIL = `${reducerName}/GET_MENUDETAIL`
+const POST_REGISTERMENU = `${reducerName}/POST_REGISTERMENU`
+const DELETE_MENU = `${reducerName}/DELETE_MENU`
+const PUT_MENU = `${reducerName}/PUT_MENU`
 
 /**
  * createActions을 통한 자동 action 생성. #13-3
  * Action 타입을 지정할 때, 지정된 규칙으로 선언해야 한다.
  */
-export const {menu: {getMenulist, getMenudetail}} = createActions({
+export const {menu: {getMenulist, getMenudetail, postRegistermenu, deleteMenu, putMenu}} = createActions({
     [GET_MENULIST]: (res) => ({menulist: res}),
     [GET_MENUDETAIL]: (res) => ({menudetail: res}),
+    [POST_REGISTERMENU]: (res) => ({registermenu: res}),
+    [DELETE_MENU]:(res) => ({deleteMenu:res}),
+    [PUT_MENU]:(res) => ({putMenu:res})
 })
 
 const menuReducer = handleActions(
@@ -32,6 +38,15 @@ const menuReducer = handleActions(
         [GET_MENUDETAIL]: (state, {payload}) => {
             return payload
         },
+        [POST_REGISTERMENU]: (state, {payload}) => {
+            return payload
+        },
+        [DELETE_MENU]: (state, {payload}) => {
+            return payload
+        },
+        [PUT_MENU]: (state, {payload}) => {
+            return payload
+        }
     }, initialState
 )
 

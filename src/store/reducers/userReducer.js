@@ -20,16 +20,14 @@ const reducerName = "user";
  */
 const LOGIN = `${reducerName}/LOGIN`
 const LOGOUT = `${reducerName}/LOGOUT`
-const REFRESH = `${reducerName}/REFRESH`
 
 /**
  * createActions을 통한 자동 action 생성. #13-3
  * Action 타입을 지정할 때, 지정된 규칙으로 선언해야 한다.
  */
-export const {user: {login, logout, refresh}} = createActions({
+export const {user: {login, logout}} = createActions({
     [LOGIN]: (res) => (res),
     [LOGOUT]: (res) => (res),
-    [REFRESH]: (res) => (res),
 })
 
 const userReducer = handleActions(
@@ -50,15 +48,12 @@ const userReducer = handleActions(
              */
             return state
         },
-        [LOGOUT]: (state,payload) => {
+        [LOGOUT]: (state) => {
             deleteCookie(LOGIN_USER_COOKIE)
             // TODO : state를 한번에 바꿀 수 있다.
             state.id = ''
             state.nickname = ''
             state.isLogged = false
-            return state
-        },
-        [REFRESH]: (state,payload) => {
             return state
         },
     }, initialState

@@ -34,7 +34,11 @@ const MenulistPage = () => {
 
     return (
         <div>
-            {userSelector.isLogged ? <Link to={"register"}>메뉴 등록하기</Link> : <div>로그아웃 상태</div>}
+            { userSelector.isLogged &&
+                <>
+                    <Link to={"register"}>메뉴 등록하기</Link>
+                </>
+            }
             {menuList ? menuList.map((item) =>
                 <MenulistItem key={item.id} item={item}/>) : <div> 조회된 상품이 없습니다. </div>}
         </div>
